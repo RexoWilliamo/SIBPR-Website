@@ -1,4 +1,4 @@
-﻿name: Verify and publish images
+name: Verify and publish images
 
 on:
   pull_request:

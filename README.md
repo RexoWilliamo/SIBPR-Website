@@ -1,4 +1,4 @@
-﻿# SIB Pekan Ranau
+# SIB Pekan Ranau
 
 Bilingual church website and public Sunday service roster for SIB Pekan Ranau, Sabah. Site admins and Sunday service admins can edit schedules; visitors can read them without signing in.
 

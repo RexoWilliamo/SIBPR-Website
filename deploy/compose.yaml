@@ -1,4 +1,4 @@
-﻿name: sibpr-${DEPLOY_ENV:?Set DEPLOY_ENV}
+name: sibpr-${DEPLOY_ENV:?Set DEPLOY_ENV}
 services:
   api:
     image: ghcr.io/${GHCR_OWNER:?Set GHCR_OWNER}/sibpr-api:${IMAGE_TAG:?Set IMAGE_TAG}

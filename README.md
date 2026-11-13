@@ -21,6 +21,10 @@ MongoDB stores service schedules and editor accounts. The browser calls `/api` o
 
 Click **View page / Lihat halaman** on a ministry card to open its page. Click **Join the SIBPR family / Jadi sebahagian daripada keluarga SIBPR** to open the welcome popup. The popup links to the Sunday schedule and ministry section; it does not collect personal data.
 
+## Homepage media
+
+The home hero uses `public/sibpr-church-hero.png` as its background and three short, silent clips in `public/hero-video/` for the right-side carousel. The clips were prepared from the locally provided `SIBPR KOIR TEAM.mp4` recording. The carousel advances automatically, has previous/next and pause controls, and stays paused when the visitor requests reduced motion. To change the video selection, replace the files and update `heroSlides` in `src/main.tsx`.
+
 ## Three stages
 
 | Stage | Purpose | Source | URL | Data |

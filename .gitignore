@@ -12,3 +12,6 @@ dist-api/
 !deploy/*.env.example
 deploy/*.env
 deploy/*.env.local
+
+.tools/
+.preview/

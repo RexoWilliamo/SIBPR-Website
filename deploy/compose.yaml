@@ -1,0 +1,38 @@
+﻿name: sibpr-${DEPLOY_ENV:?Set DEPLOY_ENV}
+services:
+  api:
+    image: ghcr.io/${GHCR_OWNER:?Set GHCR_OWNER}/sibpr-api:${IMAGE_TAG:?Set IMAGE_TAG}
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      API_PORT: "3001"
+      MONGODB_URI: ${MONGODB_URI:?Set MONGODB_URI}
+      MONGODB_DB: ${MONGODB_DB:?Set MONGODB_DB}
+      JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:?Set ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?Set ADMIN_PASSWORD}
+      WEB_ORIGIN: https://${SITE_HOST:?Set SITE_HOST}
+    networks: [internal]
+  web:
+    image: ghcr.io/${GHCR_OWNER}/sibpr-web:${IMAGE_TAG}
+    restart: unless-stopped
+    networks: [internal]
+  gateway:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      SITE_HOST: ${SITE_HOST}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on: [api, web]
+    networks: [internal]
+networks:
+  internal:
+volumes:
+  caddy_data:
+  caddy_config:

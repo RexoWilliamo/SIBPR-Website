@@ -5,3 +5,10 @@ dist/
 *.log
 
 *.tsbuildinfo
+
+dist-api/
+.env.*
+!.env.example
+!deploy/*.env.example
+deploy/*.env
+deploy/*.env.local

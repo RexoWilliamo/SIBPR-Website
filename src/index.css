@@ -95,3 +95,20 @@ button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px soli
 
 .ministry-content{padding-bottom:78px}
 .ministry-content button{width:auto;min-width:128px;display:flex;gap:9px;padding:0 12px;font-size:11px;font-weight:700}
+
+/* SIB Pekan Ranau church photo for the home hero */
+.hero-visual{
+  background-color:#173a30;
+  background-image:url('/sibpr-church-hero.png'),radial-gradient(ellipse at 73% 42%,#b8a26b7a 0%,transparent 31%),linear-gradient(130deg,#153a30 0%,#245948 48%,#628569 72%,#b39968 100%);
+  background-position:center 54%;
+  background-size:cover;
+  background-repeat:no-repeat;
+}
+.hero-visual:after{display:none}
+.hero-overlay{
+  background:linear-gradient(90deg,rgba(7,29,25,.72) 0%,rgba(11,40,34,.52) 36%,rgba(12,39,33,.10) 76%,rgba(9,30,25,.04) 100%),linear-gradient(0deg,rgba(8,31,26,.65),transparent 36%);
+}
+@media(max-width:700px){
+  .hero-visual{background-position:56% center}
+  .hero-overlay{background:linear-gradient(90deg,rgba(7,29,25,.76),rgba(7,29,25,.42)),linear-gradient(0deg,rgba(8,31,26,.62),transparent 45%)}
+}

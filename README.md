@@ -12,6 +12,15 @@ This is one repository with two deployable applications:
 
 MongoDB stores service schedules and editor accounts. The browser calls `/api` on the same origin; Vite proxies it locally, while Caddy routes it to Fastify in staging and production.
 
+## Public pages
+
+- `/` ? landing page, Sunday service schedule, ministries, and the family invitation popup.
+- `/pelayanan-wanita` ? Women's Ministry.
+- `/pelayanan-wira` ? Men's Ministry.
+- `/pelayanan-muda-mudi` ? Youth Ministry.
+
+Click **View page / Lihat halaman** on a ministry card to open its page. Click **Join the SIBPR family / Jadi sebahagian daripada keluarga SIBPR** to open the welcome popup. The popup links to the Sunday schedule and ministry section; it does not collect personal data.
+
 ## Three stages
 
 | Stage | Purpose | Source | URL | Data |

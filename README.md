@@ -1,81 +1,42 @@
-# SIB Pekan Ranau
+# SIB Pekan Ranau Website
 
-Bilingual church website and public Sunday service roster for SIB Pekan Ranau, Sabah. Site admins and Sunday service admins can edit schedules; visitors can read them without signing in.
+React, Vite, and TypeScript frontend for SIB Pekan Ranau, Sabah. The Fastify API is a separate sibling folder called `SIBPR Bckend`.
 
-## Architecture
+```text
+Desktop/
+├── SIBPR Website/   ← frontend (this folder)
+└── SIBPR Bckend/    ← Fastify API and MongoDB setup
+```
 
-This is one repository with two deployable applications:
+The public site includes the landing page, events, Sunday service schedule, and ministry pages. `/management` is a separate sign-in screen for admin and staff. The browser calls `/api` through Vite's local proxy; the backend checks credentials and permissions for management actions.
 
-- **Frontend:** React + Vite + TypeScript, shadcn/ui-compatible components (`src/`, `public/`)
-- **Backend:** Fastify + TypeScript API (`server/`)
-- **Shared operations:** Docker images, reverse proxy, environment examples, and GitHub Actions (`deploy/`, `.github/`)
+## Localhost
 
-MongoDB stores service schedules and editor accounts. The browser calls `/api` on the same origin; Vite proxies it locally, while Caddy routes it to Fastify in staging and production.
+Install Node.js 24 and Docker Desktop. In **each** folder run `npm ci` once. The backend `.env` is in `SIBPR Bckend`; keep it private.
 
-## Public pages
+From `SIBPR Website`, run:
 
-- `/` ? landing page, Sunday service schedule, ministries, and the family invitation popup.
-- `/pelayanan-wanita` ? Women's Ministry.
-- `/pelayanan-wira` ? Men's Ministry.
-- `/pelayanan-muda-mudi` ? Youth Ministry.
+```powershell
+npm run local
+```
 
-Click **View page / Lihat halaman** on a ministry card to open its page. Click **Join the SIBPR family / Jadi sebahagian daripada keluarga SIBPR** to open the welcome popup. The popup links to the Sunday schedule and ministry section; it does not collect personal data.
+The command starts MongoDB from the backend folder, starts the backend API on port 3001 and frontend on port 5173, prints the URLs, and opens `http://localhost:5173/start` in your browser. That local start page links to the public website and the private management sign-in page.
 
-## Homepage media
+For manual development, run `npm run dev` in this folder and `npm run dev` in `SIBPR Bckend` in separate terminals. Check the API at `http://localhost:3001/api/health`.
 
-The home hero uses `public/sibpr-church-hero.png` as its background and three short, silent clips in `public/hero-video/` for the right-side carousel. The clips were prepared from the locally provided `SIBPR KOIR TEAM.mp4` recording. The carousel advances automatically, has previous/next and pause controls, and stays paused when the visitor requests reduced motion. To change the video selection, replace the files and update `heroSlides` in `src/main.tsx`.
+## Builds and deployment
 
-## Three stages
+Run `npm run build` in this folder for the frontend, and run `npm run build` in `SIBPR Bckend` for the API. The frontend GitHub Actions workflow builds and publishes only the web image. The backend has a Dockerfile, but its separate GitHub publishing workflow is not configured yet. The staging and production Compose file in `deploy/compose.yaml` still expects both `sibpr-web` and `sibpr-api` images; publish the backend image before deploying either environment.
 
-| Stage | Purpose | Source | URL | Data |
-| --- | --- | --- | --- | --- |
-| Localhost | Coding and quick checks | Your working copy | `http://localhost:5173` | Local MongoDB database |
-| Staging | User acceptance testing | `develop` branch, `staging` image tag | Your staging domain | Separate staging MongoDB database |
-| Production | Public church website | Approved `v*` release tag | Your production domain | Separate production MongoDB database |
+Keep local, staging, and production MongoDB databases, secrets, and credentials separate. The frontend and backend should use matching release tags when deployed together. The frontend uses `deploy/Caddyfile` to route `/api` to Fastify and all other requests to the web app.
 
-Staging and production use the same container definitions but different hostnames, credentials, database names, and image tags. Never copy real member data into staging without approval.
+## Pages
 
-## Localhost setup
+- `/` — landing page
+- `/events` — events and activities
+- `/sunday-service` — public Sunday roster
+- `/pelayanan-wanita`, `/pelayanan-wira`, `/pelayanan-muda-mudi` — ministries
+- `/management` — admin and staff sign-in and schedule editor
+- `/start` — local-only launcher
 
-1. Install Node.js 24 and start MongoDB locally, or obtain a MongoDB Atlas connection URI.
-2. Run `npm ci`.
-3. Copy `.env.example` to `.env`. Set `MONGODB_URI`, `JWT_SECRET`, `ADMIN_EMAIL`, and `ADMIN_PASSWORD` to your own values.
-4. Run `npm run dev:api` in one terminal and `npm run dev` in another.
-5. Open `http://localhost:5173`. Check the API at `http://localhost:3001/api/health`.
-
-Run `npm run build` before submitting a pull request. This builds both the web app and compiled API.
-
-The first API startup creates the initial admin account if it does not exist. The bootstrap credentials are stored in the database as a password hash; changing `ADMIN_PASSWORD` later does **not** change that account's password. Add password change and reset flows before a public launch. An admin can create a `service_admin` with `POST /api/admin/service-admins` and an admin bearer token.
-
-## Staging and production setup
-
-The deployment files assume two Docker-capable hosts or equivalent isolated deployments: one for staging and one for production. Each hostname must point to its host, and ports 80 and 443 must be available. Caddy serves the frontend and API on one HTTPS origin. Its automatic HTTPS requires working DNS and reachable ports. See [Caddy's HTTPS documentation](https://caddyserver.com/docs/automatic-https).
-
-1. Create a GitHub repository and push this local repository. Keep the initial GitHub repository private until ready to share.
-2. Create a `develop` branch from `main`. Use feature branches and pull requests into `develop`.
-3. GitHub Actions verifies pushes and pull requests. A push to `develop` publishes `ghcr.io/<owner>/sibpr-web:staging` and `ghcr.io/<owner>/sibpr-api:staging`. A `v*` tag publishes images with that version tag. The workflow **builds images; deployment is a separate step**.
-4. On the staging host, copy `deploy/` from the repository and create `deploy/staging.env` based on `deploy/staging.env.example`. Set the real staging domain, GitHub owner, staging MongoDB URI/database, and unique secrets. Never commit this file.
-5. Sign in to GHCR on the host if the packages are private, then from the repository root run:
-
-   ```sh
-   docker compose --env-file deploy/staging.env -f deploy/compose.yaml pull
-   docker compose --env-file deploy/staging.env -f deploy/compose.yaml up -d
-   ```
-
-6. Test the staging site with users. Check `https://<staging-domain>/api/health` and confirm schedule viewing, admin sign-in, and editing.
-7. After acceptance, tag the approved commit (for example `v1.0.0`) and push the tag. Wait for the image workflow to finish. On the production host, create `deploy/production.env` from the example, set `IMAGE_TAG=v1.0.0`, and run the same two Compose commands with `production.env`.
-8. For rollback, set `IMAGE_TAG` to the prior approved version in `production.env`, then run `docker compose --env-file deploy/production.env -f deploy/compose.yaml up -d`.
-
-Use a different MongoDB user, database, `JWT_SECRET`, and admin password for each environment. The production site should only be announced after official church contact and giving details are confirmed, and editor account management is ready.
-
-## API
-
-- `GET /api/health`
-- `GET /api/services?from=YYYY-MM-DD&limit=12`
-- `GET /api/services/:date`
-- `POST /api/auth/login`
-- `GET /api/auth/me` (editor)
-- `PUT /api/services/:date` (editor)
-- `POST /api/admin/service-admins` (admin)
-
-Service dates must be Sundays. No team names are seeded automatically. Official donation and church contact details remain placeholders until provided.
+The Sunday service meets at 9:00 AM at SIB Pekan Ranau, Sabah. The site supports English and Bahasa Malaysia.

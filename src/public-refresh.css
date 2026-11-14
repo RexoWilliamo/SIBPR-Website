@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+/* Public site visual refresh. Management keeps its own interface. */
+html[data-theme="light"]{background:#ecebe7;color:#1d3048}
+html[data-theme="dark"]{background:#111a29;color:#edf2f8}
+.site-header{position:sticky;top:0;height:78px;background:#f4f3f0ed;backdrop-filter:blur(18px);border-bottom:1px solid #d9dee2;box-shadow:0 6px 24px #172f4810}
+.brand{color:#1b3049;letter-spacing:.045em;font-weight:800}
+.brand-logo{border-color:#d8e1e9;box-shadow:0 3px 10px #152c4419}
+.nav button,.language button{color:#41566b;font-weight:700}
+.nav button:hover,.nav button.current,.language button:hover,.language .active{color:#a76832}
+.nav button:after{background:#e0a66d}
+.theme-toggle{background:#e9edf1;border-color:#cbd5df;color:#274967}
+.theme-toggle:hover{background:#dce6ef}
+.scroll-progress{background:#e3a66b}
+:where(.hero,.about-section,.events-section,.schedule-section,.ministries-section,.community-section) :where(h1,h2,h3){font-family:Manrope,Arial,sans-serif;font-weight:800;letter-spacing:-.055em}
+:where(.hero,.about-section,.events-section,.schedule-section,.ministries-section,.community-section) p{line-height:1.7}
+.eyebrow{color:#b77945;letter-spacing:.16em}
+.eyebrow.light{color:#f5c794}
+.btn{border-radius:999px;gap:13px;padding:15px 23px}
+.btn-gold{background:#f0b77e;color:#1e3044;box-shadow:0 9px 24px #091c2b26}
+.btn-gold:hover{background:#ffcc98;box-shadow:0 14px 28px #091c2b35}
+.btn-green{background:#285f87;color:#fff}
+.btn-green:hover{background:#3979a3}
+.text-link{color:#255d82;border-color:#aebfca}
+.text-link:hover{color:#a76832;border-color:#a76832}
+.hero:has(.hero-split){min-height:min(760px,calc(100svh - 78px))}
+.hero-visual{background-color:#18314a;background-position:center 53%}
+.hero-visual:after{opacity:.07}
+.hero-overlay{background:linear-gradient(90deg,#0c1e32ed 0%,#142b43d4 35%,#1a304771 69%,#1a304737 100%),linear-gradient(0deg,#0e2439b5,transparent 42%)}
+.hero-split{grid-template-columns:minmax(0,1.15fr) minmax(310px,.85fr);gap:clamp(28px,5vw,90px);padding-top:clamp(80px,10vw,128px);padding-bottom:95px}
+.hero-split h1{max-width:720px;font-size:clamp(47px,5.6vw,84px);line-height:1.04;margin:22px 0 20px;text-wrap:balance;text-shadow:0 4px 25px #061a2b55}
+.hero-split p{font-size:clamp(15px,1.3vw,18px);max-width:560px;color:#e1e9f0}
+.hero-service-chip{display:inline-flex;align-items:center;gap:13px;margin-top:18px;padding:11px 18px 11px 12px;background:#f7f8f4e8;color:#183149;border:1px solid #ffffffb5;border-radius:16px;box-shadow:0 10px 25px #07192935;backdrop-filter:blur(12px)}
+.hero-service-chip svg{color:#b46a34}
+.hero-service-chip span{display:grid;gap:1px}
+.hero-service-chip strong{font-size:13px;line-height:1.25}
+.hero-service-chip small{font-size:11px;color:#5e6d7d}
+.hero-buttons{margin-top:27px;gap:26px}
+.hero-media{max-width:490px;padding:9px;border-radius:29px;background:#ffffff21;border-color:#ffffff91;box-shadow:0 30px 75px #071929a1}
+.hero-media-frame{background:#142b43;border-radius:21px}
+.hero-media-frame:before{background:linear-gradient(135deg,#e8c5a71d,transparent 50%,#0c203d55)}
+.hero-media-frame:after{background:linear-gradient(0deg,#091c33cf,transparent)}
+.hero-media-caption strong{font-family:Manrope,Arial,sans-serif;font-size:23px;font-weight:800;letter-spacing:-.04em}
+.hero-media-caption span{color:#f7c48b}
+.hero-media-controls{background:#f7f7f2ef;color:#24465e;border-color:#fff;box-shadow:0 12px 28px #07192959}
+.hero-media-dots button{background:#b5c3cf}
+.hero-media-dots button.active{background:#b66e3b}
+.hero-media-buttons button{color:#24465e}
+.hero-media-buttons button:hover{background:#e5ebf0}
+.hero-bottom{color:#e5eaf0}
+.about-section{background:#ecebe7;padding:110px 0}
+.about-copy h2,.section-heading h2,.community-intro h2{line-height:1.08;text-wrap:balance}
+.about-copy p,.section-heading p{color:#5f7181}
+.about-details{gap:14px}
+.about-details article{background:#f7f7f3;border:1px solid #dce3e8;border-radius:20px;box-shadow:0 12px 30px #17304b0b;transition:transform .25s,box-shadow .25s}
+.about-details article:hover{transform:translateY(-4px);box-shadow:0 18px 35px #17304b17}
+.about-icon{color:#bd7843}
+.about-details h3{font-size:21px}
+.about-details p{color:#687b89}
+.events-section{background:#e4eaf0}
+.activities-layout{gap:20px}
+.activities-panel,.calendar-panel{background:#f8f9f8;border:1px solid #d7e0e8;border-radius:24px;box-shadow:0 16px 36px #183e5e0d}
+.activities-table th,.calendar-weekday{color:#667c8d}
+.activities-table td,.calendar-detail{border-color:#e0e6eb}
+.activities-table tr.selected{background:#dce9f3}
+.activities-table td button:hover,.activities-table tr.selected td button{text-decoration-color:#c9854e}
+.activities-panel-foot,.calendar-detail p{color:#667b8d}
+.calendar-nav button{background:#fff;border-color:#d6e1e9;color:#2b5e7f;border-radius:10px}
+.calendar-nav button:hover{background:#e5eff6}
+.calendar-day{color:#385b75}
+button.calendar-day{background:#e2edf5;color:#28597c;border-radius:10px}
+button.calendar-day:hover{background:#cbdfea}
+button.calendar-day.selected{background:#285f87;color:#fff}
+.calendar-dot{background:#c9844c}
+.schedule-section{background:#f0efea}
+.schedule-panel{background:#fafaf8;border:1px solid #dbe3e8;border-radius:25px;overflow:hidden;box-shadow:0 22px 55px #1b3b5813}
+.schedule-top,.team-row{border-color:#e1e7eb}
+.schedule-top p,.team-row p,.empty-state,.service-notes{color:#667b8d}
+.service-theme{background:#e9f0f5;color:#365b78}
+.team-icon{background:#edf2f6;color:#b97843;border-radius:12px}
+.team-row:hover{background:#eff5f8}
+.date-switch button{border-color:#d5e0e9;color:#285f87;border-radius:10px}
+.date-switch button:not(:disabled):hover{background:#285f87}
+.ministries-section{background:#e9e8e4}
+.ministry-grid{gap:20px}
+.ministry-card{background:#f8f8f5;border:1px solid #d9e1e8;border-radius:24px;box-shadow:0 14px 34px #1c3e5810}
+.ministry-card:hover,.ministry-card.reveal.is-visible:hover{box-shadow:0 22px 46px #1c3e5828}
+.card-image{height:255px;background:linear-gradient(135deg,#396f98,#91b5cb)}
+.card-image:after{opacity:.65;background:radial-gradient(circle at 75% 25%,#fff4 0 11%,transparent 12%),radial-gradient(ellipse at 25% 90%,#173d66 0 24%,transparent 25%),radial-gradient(ellipse at 77% 84%,#87bbca 0 25%,transparent 26%)}
+.men .card-image{background:linear-gradient(135deg,#203a60,#6d8eb0)}
+.youth .card-image{background:linear-gradient(135deg,#7c5777,#dba681)}
+.ministry-content span{color:#ab6d3f}
+.ministry-content h3{font-size:27px}
+.ministry-content p{color:#667b89}
+.ministry-content button{border-color:#b6c9d7;color:#2d6081;border-radius:999px}
+.ministry-content button:hover{background:#285f87;border-color:#285f87}
+.community-section{background:radial-gradient(circle at 85% 0%,#31567d 0,transparent 39%),linear-gradient(135deg,#152840,#1c3656);color:#fff}
+.community-intro p{color:#ced9e4}
+.community-card{background:#ffffff0d;border:1px solid #ffffff30;border-radius:22px;backdrop-filter:blur(6px)}
+.community-card:hover{background:#ffffff1a;border-color:#ffffff65}
+.community-icon{color:#f2b77e}
+.community-card p{color:#d5e0ec}
+.community-note{color:#f3c18f}
+footer{background:#111e30;color:#dce7ef}
+.footer-inner p,.footer-inner>div:last-child{color:#b7c9d8}
+.copyright{border-color:#3a4f64;color:#9db3c5}
+:where(.about-section,.events-section,.schedule-section,.ministries-section,.community-section,footer)::before{background-image:radial-gradient(circle,#608ab2 1px,transparent 1.7px),linear-gradient(115deg,transparent 42%,#b3cbe510 50%,transparent 58%);opacity:.13}
+html[data-theme="dark"] .site-header,html[data-theme="dark"] .nav{background:#162236f2;border-color:#2e4055}
+html[data-theme="dark"] .brand,html[data-theme="dark"] .nav button,html[data-theme="dark"] .language button,html[data-theme="dark"] .menu-toggle{color:#eaf1f8}
+html[data-theme="dark"] .nav button:hover,html[data-theme="dark"] .nav .current,html[data-theme="dark"] .language button:hover,html[data-theme="dark"] .language .active{color:#f0b77e}
+html[data-theme="dark"] .theme-toggle{background:#293f57;border-color:#4a6581;color:#f3bd86}
+html[data-theme="dark"] .about-section,html[data-theme="dark"] .schedule-section{background:#172437}
+html[data-theme="dark"] .events-section,html[data-theme="dark"] .ministries-section{background:#111d2d}
+html[data-theme="dark"] .about-details article,html[data-theme="dark"] .activities-panel,html[data-theme="dark"] .calendar-panel,html[data-theme="dark"] .schedule-panel,html[data-theme="dark"] .ministry-card{background:#21334a;border-color:#3a526a;color:#edf2f8}
+html[data-theme="dark"] .about-copy p,html[data-theme="dark"] .about-details p,html[data-theme="dark"] .section-heading p,html[data-theme="dark"] .ministry-content p,html[data-theme="dark"] .schedule-top p,html[data-theme="dark"] .team-row p,html[data-theme="dark"] .activities-panel-foot,html[data-theme="dark"] .calendar-detail p{color:#b6c9d9}
+html[data-theme="dark"] .activities-table td,html[data-theme="dark"] .calendar-detail,html[data-theme="dark"] .schedule-top,html[data-theme="dark"] .team-row{border-color:#3a526a}
+html[data-theme="dark"] .activities-table tr.selected,html[data-theme="dark"] .service-theme,html[data-theme="dark"] .team-icon{background:#294d70;color:#eaf2fa}
+html[data-theme="dark"] .calendar-nav button,html[data-theme="dark"] .date-switch button,html[data-theme="dark"] .ministry-content button{background:#2a405a;border-color:#526d87;color:#eaf2fa}
+html[data-theme="dark"] button.calendar-day{background:#2e4e6e;color:#edf2f8}
+html[data-theme="dark"] button.calendar-day.selected{background:#d3915c;color:#162439}
+html[data-theme="dark"] .community-section{background:radial-gradient(circle at 85% 0%,#31567d 0,transparent 39%),linear-gradient(135deg,#101d2e,#192e4a)}
+html[data-theme="dark"] .community-card{background:#ffffff0c;border-color:#ffffff30}
+@media(max-width:800px){.site-header{height:72px}.nav{top:72px;background:#f4f3f0}.hero-split{gap:30px}.hero-split h1{font-size:clamp(42px,6vw,60px)}}
+@media(max-width:700px){.hero:has(.hero-split){min-height:0}.hero-split{padding-top:60px;padding-bottom:100px}.hero-overlay{background:linear-gradient(90deg,#0c1e32e8,#142b43a8),linear-gradient(0deg,#0e2439b5,transparent 48%)}.hero-split h1{font-size:clamp(43px,9vw,62px)}.hero-media{max-width:500px}.hero-service-chip{margin-top:12px}}
+@media(max-width:570px){.site-header{height:68px}.nav{top:68px}.hero-split h1{font-size:clamp(42px,10vw,56px)}.hero-split p{font-size:15px}.about-section,.events-section,.schedule-section,.ministries-section,.community-section{padding-top:75px;padding-bottom:75px}.about-details article,.activities-panel,.calendar-panel{border-radius:17px}.ministry-card,.community-card{border-radius:20px}.schedule-panel{border-radius:18px}}

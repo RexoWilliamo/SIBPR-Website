@@ -1,38 +1,27 @@
 {
-  "name": "sib-pekan-ranau",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "dev:api": "node --env-file=.env --import tsx server/index.ts",
-    "build": "npm run build:web && npm run build:api",
-    "start:api": "node --env-file=.env --import tsx server/index.ts",
-    "build:web": "tsc -b && vite build",
-    "build:api": "tsc -p tsconfig.server.json",
-    "start:api:prod": "node dist-api/index.js"
-  },
-  "dependencies": {
-    "@fastify/cors": "^10.1.0",
-    "@fastify/jwt": "^9.1.0",
-    "@radix-ui/react-slot": "^1.2.3",
-    "bcryptjs": "^3.0.2",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "fastify": "^5.3.3",
-    "lucide-react": "^0.468.0",
-    "mongodb": "^6.16.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "tailwind-merge": "^3.2.0"
-  },
-  "devDependencies": {
-    "@types/bcryptjs": "^2.4.6",
-    "@types/node": "^22.15.3",
-    "@types/react": "^19.1.2",
-    "@types/react-dom": "^19.1.2",
-    "@vitejs/plugin-react": "^4.4.1",
-    "tsx": "^4.19.4",
-    "typescript": "^5.8.3",
-    "vite": "^6.3.4"
-  }
+    "name":  "sib-pekan-ranau",
+    "private":  true,
+    "type":  "module",
+    "scripts":  {
+                    "local":  "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/local.ps1",
+                    "dev":  "vite",
+                    "build":  "npm run build:web",
+                    "build:web":  "tsc -b && vite build"
+                },
+    "dependencies":  {
+                         "@radix-ui/react-slot":  "^1.2.3",
+                         "class-variance-authority":  "^0.7.1",
+                         "clsx":  "^2.1.1",
+                         "lucide-react":  "^0.468.0",
+                         "react":  "^19.1.0",
+                         "react-dom":  "^19.1.0",
+                         "tailwind-merge":  "^3.2.0"
+                     },
+    "devDependencies":  {
+                            "@types/react":  "^19.1.2",
+                            "@types/react-dom":  "^19.1.2",
+                            "@vitejs/plugin-react":  "^4.4.1",
+                            "typescript":  "^5.8.3",
+                            "vite":  "^6.3.4"
+                        }
 }

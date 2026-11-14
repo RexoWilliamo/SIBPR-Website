@@ -54,9 +54,3 @@ jobs:
           file: deploy/Dockerfile.web
           push: true
           tags: ghcr.io/${{ steps.names.outputs.owner }}/sibpr-web:${{ steps.names.outputs.tag }}
-      - uses: docker/build-push-action@v6
-        with:
-          context: .
-          file: deploy/Dockerfile.api
-          push: true
-          tags: ghcr.io/${{ steps.names.outputs.owner }}/sibpr-api:${{ steps.names.outputs.tag }}

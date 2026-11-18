@@ -11,6 +11,10 @@ import { LocalStartPage } from './LocalStartPage'
 import './index.css'
 import './public-refresh.css'
 
+if (window.location.pathname === '/') {
+  window.history.replaceState(window.history.state, '', `/Mainpage${window.location.search}${window.location.hash}`)
+}
+
 type Lang = 'bm' | 'en'
 type MinistryKey = 'wanita' | 'wira' | 'muda-mudi'
 const ministryPaths: Record<MinistryKey, string> = { wanita: '/pelayanan-wanita', wira: '/pelayanan-wira', 'muda-mudi': '/pelayanan-muda-mudi' }
@@ -35,6 +39,7 @@ function App() {
   const [activeSection, setActiveSection] = useState('home')
   const [scrollProgress, setScrollProgress] = useState(0)
   const [route, setRoute] = useState(window.location.pathname)
+  const landingPage = route === '/' || route === '/Mainpage'
   const [joinOpen, setJoinOpen] = useState(false)
   const ministryPage = (Object.keys(ministryPaths) as MinistryKey[]).find(key => ministryPaths[key] === route)
   const servicePage = route === '/sunday-service'
@@ -100,9 +105,9 @@ function App() {
       window.scrollTo(0, 0)
       return
     }
-    if (route !== '/') {
-      window.history.pushState({}, '', '/')
-      setRoute('/')
+    if (!landingPage) {
+      window.history.pushState({}, '', '/Mainpage')
+      setRoute('/Mainpage')
       setActiveSection(id)
       requestAnimationFrame(() => requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })))
     } else document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })

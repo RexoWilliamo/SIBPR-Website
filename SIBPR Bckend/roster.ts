@@ -46,7 +46,7 @@ export function registerRoster(app: FastifyInstance, db: Db, editor: (request: a
   app.put('/api/management/services/:date/publish', { preHandler: editor }, async (request, reply) => {
     const { date } = request.params as { date: string }
     const parsedDate = new Date(`${date}T00:00:00Z`)
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || Number.isNaN(parsedDate.getTime()) || parsedDate.toISOString().slice(0, 10) !== date || parsedDate.getUTCDay() !== 0) return reply.code(400).send({ error: 'Choose a Sunday date' })
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || Number.isNaN(parsedDate.getTime()) || parsedDate.toISOString().slice(0, 10) !== date) return reply.code(400).send({ error: 'Choose a valid date' })
     const body = request.body as { theme?: unknown; scripture?: unknown; notes?: unknown; selection?: Selection }
     if (typeof body?.theme !== 'string' || body.theme.length > 120 || typeof body.scripture !== 'string' || body.scripture.length > 120 || typeof body.notes !== 'string' || body.notes.length > 1000) return reply.code(400).send({ error: 'Invalid service details' })
     const choice = body.selection

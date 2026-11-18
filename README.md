@@ -1,12 +1,6 @@
 # SIB Pekan Ranau Website
 
-React, Vite, and TypeScript frontend for SIB Pekan Ranau, Sabah. The Fastify API is a separate sibling folder called `SIBPR Bckend`.
-
-```text
-Desktop/
-├── SIBPR Website/   ← frontend (this folder)
-└── SIBPR Bckend/    ← Fastify API and MongoDB setup
-```
+The React/Vite website is at the repository root. The Fastify API and MongoDB setup are in `SIBPR Bckend/` in the same repository.
 
 The public site includes the landing page, events, Sunday service schedule, and ministry pages. `/management` is a separate sign-in screen for admin and staff. The browser calls `/api` through Vite's local proxy; the backend checks credentials and permissions for management actions.
 
@@ -26,7 +20,7 @@ For manual development, run `npm run dev` in this folder and `npm run dev` in `S
 
 ## Builds and deployment
 
-Run `npm run build` in this folder for the frontend, and run `npm run build` in `SIBPR Bckend` for the API. The frontend GitHub Actions workflow builds and publishes only the web image. The backend has a Dockerfile, but its separate GitHub publishing workflow is not configured yet. The staging and production Compose file in `deploy/compose.yaml` still expects both `sibpr-web` and `sibpr-api` images; publish the backend image before deploying either environment.
+Run `npm run build` in this folder for the frontend, and run `npm run build` in `SIBPR Bckend` for the API. The GitHub Actions workflow builds both applications and publishes `sibpr-web` and `sibpr-api` images from this repository. The staging and production Compose file in `deploy/compose.yaml` uses those images.
 
 Keep local, staging, and production MongoDB databases, secrets, and credentials separate. The frontend and backend should use matching release tags when deployed together. The frontend uses `deploy/Caddyfile` to route `/api` to Fastify and all other requests to the web app.
 

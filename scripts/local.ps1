@@ -1,7 +1,11 @@
 $ErrorActionPreference = 'Stop'
 Set-Location (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
 $frontendPath = (Get-Location).Path
-$backendPath = Join-Path (Split-Path $frontendPath -Parent) 'SIBPR Bckend'
+$backendPath = Join-Path $frontendPath 'SIBPR Bckend'
+if (-not (Test-Path -LiteralPath (Join-Path $backendPath '.env'))) {
+  $legacyBackendPath = Join-Path (Split-Path $frontendPath -Parent) 'SIBPR Bckend'
+  if (Test-Path -LiteralPath (Join-Path $legacyBackendPath '.env')) { $backendPath = $legacyBackendPath }
+}
 
 function Test-LocalUrl([string]$Url) {
   try { return (Invoke-WebRequest -Uri $Url -UseBasicParsing -TimeoutSec 3).StatusCode -eq 200 }

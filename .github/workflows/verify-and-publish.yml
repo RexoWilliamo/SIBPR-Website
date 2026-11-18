@@ -21,6 +21,10 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+      - run: npm ci
+        working-directory: SIBPR Bckend
+      - run: npm run build
+        working-directory: SIBPR Bckend
 
   publish:
     needs: verify
@@ -54,3 +58,9 @@ jobs:
           file: deploy/Dockerfile.web
           push: true
           tags: ghcr.io/${{ steps.names.outputs.owner }}/sibpr-web:${{ steps.names.outputs.tag }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: ./SIBPR Bckend
+          file: ./SIBPR Bckend/Dockerfile
+          push: true
+          tags: ghcr.io/${{ steps.names.outputs.owner }}/sibpr-api:${{ steps.names.outputs.tag }}

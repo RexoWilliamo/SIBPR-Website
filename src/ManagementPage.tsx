@@ -1,6 +1,7 @@
 import { useEffect, useState, type FormEvent } from 'react'
 import { CalendarDays, LogOut, Plus, Trash2, Users } from 'lucide-react'
 import { SundayRosterEditor, type Selection } from './SundayRosterEditor'
+import './management-refresh.css'
 
 type Lang = 'bm' | 'en'
 type Teams = { praise: string[]; ushers: string[]; leaders: string[]; multimedia: string[] }

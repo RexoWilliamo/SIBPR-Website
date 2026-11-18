@@ -1,0 +1,95 @@
+/* Staff workspace: restrained operations UI, separate from the public site. */
+.management-page{
+  --mg-bg:#edf1f4;--mg-panel:#fff;--mg-text:#1b2838;--mg-muted:#607184;
+  --mg-border:#d6dfe6;--mg-soft:#f2f5f8;--mg-hover:#e7edf3;
+  --mg-accent:#225b78;--mg-accent-hover:#16445e;--mg-input:#fff;
+  background:linear-gradient(180deg,#e5ebf0 0,#edf1f4 360px);
+  font-family:'DM Sans',Arial,sans-serif;
+}
+.management-appbar{background:#172638;border-bottom:1px solid #40556a;box-shadow:0 6px 22px #17263820}
+.management-appbar-inner{min-height:72px}
+.management-appbar-brand strong{letter-spacing:.1em;font-size:13px}
+.management-appbar-brand span{color:#a9c1d2;letter-spacing:.16em}
+.management-appbar-access{background:#2a4256;border:1px solid #658095;color:#e9f2f8;font-weight:700}
+.management-shell{width:min(1430px,calc(100% - clamp(32px,5vw,96px)));padding-top:24px}
+.management-heading{margin:0 0 22px;padding:2px 0 21px}
+.management-heading:after{background:#d6a16c;width:56px}
+.management-heading .eyebrow{letter-spacing:.15em;color:#4d7088}
+.management-heading h1{font-family:'DM Sans',Arial,sans-serif;font-weight:700;font-size:clamp(31px,3vw,42px);letter-spacing:-.045em;margin:8px 0 5px}
+.management-heading p{font-size:14px;color:var(--mg-muted)}
+.management-top{margin-bottom:8px}
+.management-signout{background:#fff;border:1px solid var(--mg-border);color:#43576b;border-radius:8px}
+.management-signout:hover{background:#f4f7f9;color:#1c3f58}
+.management-subnav{width:100%;display:flex;gap:3px;margin-bottom:20px;padding:5px;background:#dfe6ec;border:1px solid #d2dce4;border-radius:10px;box-shadow:none}
+.management-subnav button{flex:1;justify-content:center;min-height:45px;border-radius:7px;font-size:12px;color:#445a6c}
+.management-subnav button:hover{background:#f8fafb}
+.management-subnav button.active{background:#fff;color:#174c69;box-shadow:0 2px 9px #1b364423,inset 0 -3px #2c718f}
+.management-layout{grid-template-columns:minmax(230px,275px) minmax(0,1fr);gap:18px}
+.management-list,.management-form,.management-staff,.roster-editor,.management-login,.management-view-intro{border:1px solid var(--mg-border);border-radius:10px;box-shadow:0 8px 22px #25394b0b,0 1px 2px #25394b0b}
+.management-list{overflow:hidden;top:18px}
+.management-list-heading{background:#f7f9fa;border-bottom:1px solid var(--mg-border);padding:18px 20px}
+.management-list-heading svg{color:#2b708e}
+.management-list-heading h2{font-size:14px;font-weight:700}
+.management-new{background:#225b78;border:1px solid #225b78;color:#fff;border-radius:7px;margin:15px 14px 12px;box-shadow:0 4px 10px #225b7825}
+.management-new:hover{background:#16445e;border-color:#16445e}
+.management-list-item{padding:15px 19px;border-top:1px solid #e5ebef}
+.management-list-item:hover{background:#f0f5f8}
+.management-list-item.active{background:#eaf3f7;box-shadow:3px 0 0 #2c718f inset}
+.management-list-item strong{font-size:13px;color:#22384c}
+.management-list-item span{font-size:12px;color:#65798b}
+.management-content{gap:16px}
+.management-form,.management-staff,.roster-editor{padding:27px clamp(21px,2.5vw,34px)}
+.management-form-head{margin-bottom:22px;padding-bottom:18px}
+.management-form-head h2,.roster-title h2{font-family:'DM Sans',Arial,sans-serif;font-size:21px;font-weight:700}
+.management-form-head span{background:#e9f2f6;border:1px solid #c8dde8;color:#205b78;padding:7px 12px}
+.management-section-title{color:#285e7c;font-size:10px;letter-spacing:.12em;border-bottom:1px solid #dce5eb;padding:12px 0 9px}
+.management-fields{gap:19px 22px;margin:20px 0 4px}
+.management-page label{font-size:12px;color:#33475b}
+.management-page input,.management-page textarea,.roster-person-form select,.roster-field select{border-radius:7px;border-color:#cbd7df;min-height:44px;box-shadow:0 1px 2px #263d4d08}
+.management-page input:hover,.management-page textarea:hover,.roster-person-form select:hover,.roster-field select:hover{border-color:#9db4c3}
+.management-page input:focus,.management-page textarea:focus,.roster-person-form select:focus,.roster-field select:focus{border-color:#2c718f;box-shadow:0 0 0 3px #2c718f26}
+.management-actions{margin-top:22px;padding-top:21px}
+.management-page .btn{min-height:43px;border-radius:7px;font-weight:700;box-shadow:none}
+.management-page .btn-gold,.management-page .btn-green{background:#225b78;color:#fff}
+.management-page .btn-gold:hover,.management-page .btn-green:hover{background:#16445e;box-shadow:0 7px 15px #16445e25}
+.management-delete{border-radius:7px}
+.management-status{background:#e6f0f5;border-left:3px solid #2c718f;color:#264d63}
+.management-view-intro{padding:19px 24px;background:#fff}
+.management-view-intro span{color:#45758e}
+.management-view-intro strong{font-size:19px}
+.roster-editor{background:#fff}
+.roster-tabs{gap:7px;border-bottom-color:#dce5eb}
+.roster-tabs button{background:#f3f6f8;border-color:#d5e0e7;color:#465e70}
+.roster-tabs button.active{background:#225b78;border-color:#225b78;color:#fff;box-shadow:none}
+.roster-tab-number{background:#dce9ef;color:#225b78}
+.roster-panel{background:#f4f7f9;border-color:#dce5eb}
+.roster-directory,.roster-assignment,.roster-available,.roster-serving{border-color:#d5dfe7;box-shadow:0 2px 6px #263d4d09}
+.roster-board-heading{background:#edf3f6}
+.roster-source{border-radius:7px}
+.roster-source:hover{background:#eef5f8}
+.roster-source.picked{background:#e5f1f6;border-color:#4b89a5;box-shadow:0 0 0 2px #4b89a52b}
+.roster-drop-slot{border-color:#b8cad5;background:#fff}
+.roster-drop-slot.over{border-color:#2c718f;background:#e7f3f8;box-shadow:0 0 0 3px #2c718f25}
+.roster-drop-target:hover{background:#eff6f9}
+.roster-person-form,.roster-multi{border-radius:8px}
+.management-login{max-width:470px;padding:36px 38px}
+.management-login h2{font-family:'DM Sans',Arial,sans-serif;font-size:22px;font-weight:700}
+.management-page button:focus-visible,.management-page input:focus-visible,.management-page select:focus-visible,.management-page textarea:focus-visible{outline:2px solid #2c718f;outline-offset:2px}
+html[data-theme="dark"] .management-page{--mg-bg:#151d27;--mg-panel:#202c39;--mg-text:#edf2f6;--mg-muted:#afc0ce;--mg-border:#3b4c5d;--mg-soft:#29394a;--mg-hover:#314457;--mg-accent:#82bedb;--mg-accent-hover:#a6d7e9;--mg-input:#182432;background:linear-gradient(180deg,#1b2b3a,#151d27 360px)}
+html[data-theme="dark"] .management-subnav{background:#1b2835;border-color:#3b4c5d}
+html[data-theme="dark"] .management-subnav button{color:#b8cad7}
+html[data-theme="dark"] .management-subnav button.active{background:#2e455a;color:#e9f5fa;box-shadow:inset 0 -3px #88c8df}
+html[data-theme="dark"] .management-subnav button:hover{background:#2b4052;color:#fff}
+html[data-theme="dark"] .management-list-heading,html[data-theme="dark"] .roster-board-heading{background:#263646;border-color:#3b4c5d}
+html[data-theme="dark"] .management-new,html[data-theme="dark"] .management-page .btn-gold,html[data-theme="dark"] .management-page .btn-green,html[data-theme="dark"] .roster-tabs button.active{background:#367b9b;border-color:#367b9b;color:#fff}
+html[data-theme="dark"] .management-list-item strong,html[data-theme="dark"] .management-page label{color:#e0eaf0}
+html[data-theme="dark"] .management-list-item:hover,html[data-theme="dark"] .management-list-item.active{background:#2c4051}
+html[data-theme="dark"] .management-form-head span,html[data-theme="dark"] .management-status{background:#29445a;color:#d8edf7;border-color:#426b82}
+html[data-theme="dark"] .management-view-intro,html[data-theme="dark"] .roster-editor,html[data-theme="dark"] .roster-drop-slot{background:#202c39}
+html[data-theme="dark"] .roster-panel,html[data-theme="dark"] .roster-tabs button{background:#263646;border-color:#3b4c5d;color:#dbe8ee}
+html[data-theme="dark"] .roster-tabs button.active{background:#367b9b;color:#fff}
+html[data-theme="dark"] .roster-source:hover,html[data-theme="dark"] .roster-drop-target:hover{background:#304659}
+html[data-theme="dark"] .roster-source.picked,html[data-theme="dark"] .roster-drop-slot.over{background:#31526a}
+@media(max-width:960px){.management-layout{grid-template-columns:1fr}.management-list{position:static}.management-list-item{width:100%}}
+@media(max-width:760px){.management-subnav{overflow-x:auto}.management-subnav button{flex:none;white-space:nowrap}}
+@media(max-width:570px){.management-shell{width:calc(100% - 28px)}.management-login{padding:25px}.management-form,.management-staff,.roster-editor{padding:20px}.management-subnav{margin-bottom:16px}}

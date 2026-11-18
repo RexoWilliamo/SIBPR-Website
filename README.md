@@ -34,3 +34,9 @@ Keep local, staging, and production MongoDB databases, secrets, and credentials 
 - `/start` — local-only launcher
 
 The Sunday service meets at 9:00 AM at SIB Pekan Ranau, Sabah. The site supports English and Bahasa Malaysia.
+
+## Mainpage media
+
+Sign in at `/management` as an admin or staff member and open **Mainpage media**. Each card shows the current photo or video. Choose **Replace file** to preview a new one, then select **Publish** to update the Mainpage. Refresh the Mainpage to see the change. **Restore original** removes a published override and brings back the bundled file, or removes optional media.
+
+Photos accept JPG, PNG, or WebP up to 8 MB. Hero videos accept MP4 or WebM up to 30 MB. Uploaded files are stored in MongoDB GridFS, so the API and MongoDB must be running and the database must have enough storage. No website rebuild is needed for later media changes.
